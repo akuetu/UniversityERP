@@ -1,0 +1,113 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <p>Inscrição - Curso</p>
+</div>
+
+
+
+<form>
+
+    <div class="form-row">
+        <div class="form-group col-md-8">
+            <label for="nome">Nome</label>
+            <input type="nome" class="form-control" id="nome" placeholder="Jane Doe">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="telefone">Telefone</label>
+            <input type="tel" class="form-control" id="telefone" placeholder="91111111">
+        </div>
+    </div>
+
+    <div class="form-row">
+    
+        <div class="form-group col-md-8">
+            <label for="morada">Morada</label>
+            <input type="text" class="form-control" id="morada" placeholder="Rua de Luanda nº 20">
+        </div>
+    <div class="form-group col-md-4">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" id="email" placeholder="nome.apelido@gmail.com">
+        </div>
+
+    </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="pais">País</label>
+                <select id="pais" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="municipio">Municipio</label>
+                <select id="municipio" class="form-control">
+                    <option selected>Choose...</option>
+                    <option>...</option>
+                </select>
+            </div>
+
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="curso">Curso</label>
+                <select id="curso" class="form-control">
+                    <option>Large select</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="periodo">Periodo</label>
+                <select id="periodo" class="form-control">
+                    <option>Default select</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="tipoDocumento">Tipo de documento</label>
+                <select id="tipoDocumento" class="form-control">
+                    <option>Small select</option>
+                </select>
+            </div>
+            <div class="form-group  col-md-6">
+                <label for="fileDocumento">Anexo</label>
+                <input type="file" class="form-control" id="fileDocumento">
+            </div>
+        </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="tipoPagamento">Tipo de pagamento</label>
+            <select id="tipoPagamento" class="form-control">
+                <option>Small select</option>
+            </select>
+        </div>
+        <div class="form-group  col-md-6">
+            <label for="filePagamento">Anexo</label>
+            <input type="file" class="form-control" id="filePagamento">
+        </div>
+    </div>
+
+    <div class="form-group">
+            <label for="obs">Observação</label>
+            <textarea type="text" class="form-control" id="obs"></textarea>
+        </div>
+
+        <div class="form-group">
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" id="gridCheck">
+                <label class="form-check-label" for="gridCheck">
+                    Possuo algum tipo de Deficiência
+                </label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Confirmar Inscrição</button>
+
+
+
+
+</form>
