@@ -2,11 +2,11 @@
 using System.Threading.Tasks;
 using Enrollment.Model.Entities;
 
-namespace Enrollment.Infrastructure.Data.Interfaces
+namespace Enrollment.Services.Interfaces
 {
-    public interface IUserEnrollmentRepository
+    public interface IUserEnrollmentService
     {
-        Task<List<UserEnrollment>> GetEnrollment();
+        Task<List<UserEnrollment>>GetEnrollment();
         Task SaveEnrollment(UserEnrollment enrollment);
     }
 }

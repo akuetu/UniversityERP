@@ -5,6 +5,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
 using Enrollment.Infrastructure.Data.Context;
+using Enrollment.Infrastructure.Data.Interfaces;
+using Enrollment.Infrastructure.Data.Repository;
+using Enrollment.Services;
+using Enrollment.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
 
 namespace Enrollment
@@ -25,6 +29,11 @@ namespace Enrollment
             services.AddControllers();
             services.AddDbContext<EnrollmentContext>(
                 options => options.UseSqlServer("name=DefaultConnection"));
+
+
+            services.AddTransient<IHttpHelperService, HttpHelperService>();
+            services.AddTransient<IUserEnrollmentService, UserEnrollmentService>();
+            services.AddTransient<IUserEnrollmentRepository, UserEnrollmentRepository>();
 
             services.AddSwaggerGen(c =>
             {

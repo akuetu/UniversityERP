@@ -1,11 +1,12 @@
-﻿using System.Threading.Tasks;
+﻿using System.Collections.Generic;
+using System.Threading.Tasks;
 using Enrollment.Infrastructure.Data.Interfaces;
 using Enrollment.Model.Entities;
 using Enrollment.Services.Interfaces;
 
 namespace Enrollment.Services
 {
-    public class UserEnrollmentService: IUserEnrollment
+    public class UserEnrollmentService: IUserEnrollmentService
     {
         private readonly IUserEnrollmentRepository _userEnrollmentRepository;
 
@@ -13,9 +14,16 @@ namespace Enrollment.Services
         {
             _userEnrollmentRepository = userEnrollmentRepository;
         }
-        public Task SaveEnrollment(UserEnrollment enrollment)
+
+
+        public async Task<List<UserEnrollment>> GetEnrollment()
         {
-            return _userEnrollmentRepository.SaveEnrollment(enrollment);
+            return await _userEnrollmentRepository.GetEnrollment();
+        }
+
+        public async Task SaveEnrollment(UserEnrollment enrollment)
+        {
+             await _userEnrollmentRepository.SaveEnrollment(enrollment);
         }
 
          

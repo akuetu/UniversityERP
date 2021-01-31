@@ -2,7 +2,7 @@
 
 namespace Enrollment.Model.Entities
 {
-    public class UserEnrollment
+    public class UserEnrollViewModel
     {
         public int Id { get; set; }
         public User User { get; set; }
@@ -15,7 +15,5 @@ namespace Enrollment.Model.Entities
         public List<PaymentType> PaymentType{ get; set; }
         public string PathTypePayment { get; set; }
         public string Note { get; set; }
-
-
     }
 }
