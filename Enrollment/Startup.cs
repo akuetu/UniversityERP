@@ -26,7 +26,12 @@ namespace Enrollment
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers();
+           // services.AddControllers();
+            services.AddControllers().AddNewtonsoftJson(options =>
+                       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
+                       );
+
+
             services.AddDbContext<EnrollmentContext>(
                 options => options.UseSqlServer("name=DefaultConnection"));
 

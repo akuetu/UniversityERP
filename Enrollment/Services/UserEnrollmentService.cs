@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enrollment.Infrastructure.Data.Interfaces;
 using Enrollment.Model.Entities;
@@ -18,12 +19,14 @@ namespace Enrollment.Services
 
         public async Task<IReadOnlyList<UserEnrollment>> GetEnrollment()
         {
-            return await _userEnrollmentRepository.GetEnrollment();
+            return  await _userEnrollmentRepository.GetEnrollment();
         }
 
-        public async Task SaveEnrollment(UserEnrollment enrollment)
+        public async Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment)
         {
-             await _userEnrollmentRepository.SaveEnrollment(enrollment);
+            if (enrollment == null) throw new ArgumentNullException(nameof(enrollment));
+    
+            return await _userEnrollmentRepository.SaveEnrollment(enrollment);
         }
 
          

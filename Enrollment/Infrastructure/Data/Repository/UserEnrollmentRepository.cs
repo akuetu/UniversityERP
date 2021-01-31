@@ -23,7 +23,6 @@ namespace Enrollment.Infrastructure.Data.Repository
         public async Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment)
         {
           return  await AddAsync(enrollment);
-
         }
     }
 }

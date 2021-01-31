@@ -2,6 +2,7 @@
 using Enrollment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
+using System.Threading.Tasks;
 
 namespace Enrollment.Controllers
 {
@@ -18,19 +19,19 @@ namespace Enrollment.Controllers
 
 
         [HttpGet]
-        public IActionResult GetEnrollments()
+        public async Task<IActionResult> GetEnrollmentsAsync()
         {
-            var enrollments = _userEnrollmentService.GetEnrollment();
+            var enrollments = await _userEnrollmentService.GetEnrollment();
             return Ok(enrollments);
         }
 
         [HttpPost]
-        public IActionResult SaveEnrollments(UserEnrollment userEnrollment)
+        public async Task<IActionResult> SaveEnrollments(UserEnrollment userEnrollment)
         {
             //add obj validation
             if (userEnrollment == null) return NotFound();
 
-            var enrollments = _userEnrollmentService.SaveEnrollment(userEnrollment);
+            var enrollments = await _userEnrollmentService.SaveEnrollment(userEnrollment);
             return Ok(enrollments);
         }
     }
