@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Threading.Tasks;
-using Enrollment.Infrastructure.Data.FluentApi;
-using Enrollment.Model;
+﻿using Enrollment.Infrastructure.Data.FluentApi;
 using Enrollment.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 

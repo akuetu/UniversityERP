@@ -6,7 +6,7 @@ namespace Enrollment.Services.Interfaces
 {
     public interface IUserEnrollmentService
     {
-        Task<List<UserEnrollment>>GetEnrollment();
+        Task<IReadOnlyList<UserEnrollment>>GetEnrollment();
         Task SaveEnrollment(UserEnrollment enrollment);
     }
 }

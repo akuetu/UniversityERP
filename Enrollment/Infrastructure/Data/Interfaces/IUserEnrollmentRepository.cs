@@ -6,7 +6,7 @@ namespace Enrollment.Infrastructure.Data.Interfaces
 {
     public interface IUserEnrollmentRepository
     {
-        Task<List<UserEnrollment>> GetEnrollment();
-        Task SaveEnrollment(UserEnrollment enrollment);
+        Task<IReadOnlyList<UserEnrollment>> GetEnrollment();
+        Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment);
     }
 }

@@ -16,7 +16,7 @@ namespace Enrollment.Services
         }
 
 
-        public async Task<List<UserEnrollment>> GetEnrollment()
+        public async Task<IReadOnlyList<UserEnrollment>> GetEnrollment()
         {
             return await _userEnrollmentRepository.GetEnrollment();
         }

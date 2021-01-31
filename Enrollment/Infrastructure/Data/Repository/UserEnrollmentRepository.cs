@@ -11,24 +11,19 @@ namespace Enrollment.Infrastructure.Data.Repository
 {
     public class UserEnrollmentRepository: BaseRepository<UserEnrollment>, IUserEnrollmentRepository
     {
-        private readonly EnrollmentContext _dbContext;
+   
+        public UserEnrollmentRepository(EnrollmentContext dbContext):base(dbContext) {}
 
 
-        public UserEnrollmentRepository(EnrollmentContext dbContext):base(dbContext)
+        public async Task<IReadOnlyList<UserEnrollment>> GetEnrollment()
         {
-            _dbContext = dbContext;
+            return await ListAllAsync();
         }
 
-
-        public async Task<List<UserEnrollment>> GetEnrollment()
+        public async Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment)
         {
-            return await _dbContext.UserEnrollment.ToListAsync();
-        }
+          return  await AddAsync(enrollment);
 
-        public async Task SaveEnrollment(UserEnrollment enrollment)
-        {
-             await _dbContext.UserEnrollment.AddAsync(enrollment);
-              
         }
     }
 }
