@@ -33,11 +33,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gateway.Tests", "GatewayTes
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Identity.Tests", "Identity.Tests\Identity.Tests.csproj", "{636D3EF7-6492-438D-AB53-82A9F61944F9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Payments.Tests", "Payments.Tests\Payments.Tests.csproj", "{878F5DB2-1670-454D-B5CA-51C8D23B8048}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Payments.Tests", "Payments.Tests\Payments.Tests.csproj", "{878F5DB2-1670-454D-B5CA-51C8D23B8048}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports.Tests", "Reports.Tests\Reports.Tests.csproj", "{6559F218-2846-428B-87E1-0173FAA8D039}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Reports.Tests", "Reports.Tests\Reports.Tests.csproj", "{6559F218-2846-428B-87E1-0173FAA8D039}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Subscription.Tests", "Subscription.Tests\Subscription.Tests.csproj", "{922E1511-5629-4F9E-9C6C-22F374A500CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Subscription.Tests", "Subscription.Tests\Subscription.Tests.csproj", "{922E1511-5629-4F9E-9C6C-22F374A500CF}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "BackEnd", "BackEnd", "{72DB798A-9110-4D6C-935E-95AB00A55861}"
 EndProject
@@ -45,13 +45,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrontEnd", "FrontEnd", "{2D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{360E3F2F-EBB5-4E83-861C-F8F9829D03CE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "University.Web", "University.Web\University.Web.csproj", "{0021DA45-627C-463D-A641-2D233934F8EE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "University.Web", "University.Web\University.Web.csproj", "{0021DA45-627C-463D-A641-2D233934F8EE}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "React", "React", "{F2DAAC69-0BE1-45E1-B01C-BF565D80E068}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{847EF7B8-7F89-4D99-83F3-AB3C0D120AE5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{5C1D2355-F9C4-4A0E-8753-A518A674829B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{5C1D2355-F9C4-4A0E-8753-A518A674829B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CE39C6F8-5C6C-4F95-8C51-1E1613C8F10E}"
+	ProjectSection(SolutionItems) = preProject
+		README.txt = README.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
