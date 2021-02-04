@@ -3,6 +3,7 @@ using Enrollment.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Formatters;
 using System.Threading.Tasks;
+using Enrollment.Infrastructure.Data.FluentValidation;
 
 namespace Enrollment.Controllers
 {

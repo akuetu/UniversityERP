@@ -18,11 +18,10 @@ namespace Enrollment.Infrastructure.Data.FluentApi
             builder.Property(x => x.PathTypePayment).HasMaxLength(100);
             builder.Property(x => x.CountryId).IsRequired();
             builder.Property(x => x.CountyId).IsRequired();
-            builder.Property(x => x.CourseId).IsRequired();
             builder.Property(x => x.DocumentTypeId).IsRequired();
             builder.Property(x => x.PaymentTypeId).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-            builder.Property(x => x.PeriodId).IsRequired();
+            builder.Property(x => x.CoursePeriods).IsRequired();
         }
     }
 }
