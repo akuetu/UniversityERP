@@ -4,14 +4,16 @@ using Enrollment.Infrastructure.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Enrollment.Migrations
 {
     [DbContext(typeof(EnrollmentContext))]
-    partial class EnrollmentContextModelSnapshot : ModelSnapshot
+    [Migration("20210217234059_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -87,20 +89,16 @@ namespace Enrollment.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int?>("CourseId")
+                    b.Property<int>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int?>("PeriodId")
+                    b.Property<int>("PeriodId")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserEnrollmentId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("CourseId");
-
-                    b.HasIndex("PeriodId");
 
                     b.HasIndex("UserEnrollmentId");
 
@@ -229,21 +227,9 @@ namespace Enrollment.Migrations
 
             modelBuilder.Entity("Enrollment.Model.Entities.CoursePeriod", b =>
                 {
-                    b.HasOne("Enrollment.Model.Entities.Course", "Course")
-                        .WithMany()
-                        .HasForeignKey("CourseId");
-
-                    b.HasOne("Enrollment.Model.Entities.Period", "Period")
-                        .WithMany()
-                        .HasForeignKey("PeriodId");
-
                     b.HasOne("Enrollment.Model.Entities.UserEnrollment", "UserEnrollment")
                         .WithMany("CoursePeriods")
                         .HasForeignKey("UserEnrollmentId");
-
-                    b.Navigation("Course");
-
-                    b.Navigation("Period");
 
                     b.Navigation("UserEnrollment");
                 });

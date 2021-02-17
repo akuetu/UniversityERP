@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Enrollment.Migrations
 {
     [DbContext(typeof(EnrollmentContext))]
-    [Migration("20210214113758_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20210217235016_upgrade_Curso_Periodo")]
+    partial class upgrade_Curso_Periodo
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -89,10 +89,10 @@ namespace Enrollment.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CourseId")
+                    b.Property<int?>("CourseId")
                         .HasColumnType("int");
 
-                    b.Property<int>("PeriodId")
+                    b.Property<int?>("PeriodId")
                         .HasColumnType("int");
 
                     b.Property<int?>("UserEnrollmentId")
@@ -233,15 +233,11 @@ namespace Enrollment.Migrations
                 {
                     b.HasOne("Enrollment.Model.Entities.Course", "Course")
                         .WithMany()
-                        .HasForeignKey("CourseId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("CourseId");
 
                     b.HasOne("Enrollment.Model.Entities.Period", "Period")
                         .WithMany()
-                        .HasForeignKey("PeriodId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("PeriodId");
 
                     b.HasOne("Enrollment.Model.Entities.UserEnrollment", "UserEnrollment")
                         .WithMany("CoursePeriods")

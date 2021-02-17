@@ -7,8 +7,8 @@ namespace Enrollment.Infrastructure.Data.FluentValidation
     {
         public ValidateCoursePeriodViewModel()
         {
-            RuleFor(x => x.CourseId).NotNull();
-            RuleFor(x => x.PeriodId).NotNull();
+            RuleFor(x => x.Course.Id).NotNull();
+            RuleFor(x => x.Period.Id).NotNull();
         }
     }
 }

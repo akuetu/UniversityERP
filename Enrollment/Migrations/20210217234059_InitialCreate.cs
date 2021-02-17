@@ -137,34 +137,12 @@ namespace Enrollment.Migrations
                 {
                     table.PrimaryKey("PK_CoursePeriod", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CoursePeriod_Courses_CourseId",
-                        column: x => x.CourseId,
-                        principalTable: "Courses",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CoursePeriod_Periods_PeriodId",
-                        column: x => x.PeriodId,
-                        principalTable: "Periods",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
                         name: "FK_CoursePeriod_UserEnrollment_UserEnrollmentId",
                         column: x => x.UserEnrollmentId,
                         principalTable: "UserEnrollment",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                 });
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CoursePeriod_CourseId",
-                table: "CoursePeriod",
-                column: "CourseId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CoursePeriod_PeriodId",
-                table: "CoursePeriod",
-                column: "PeriodId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_CoursePeriod_UserEnrollmentId",
@@ -184,19 +162,19 @@ namespace Enrollment.Migrations
                 name: "CoursePeriod");
 
             migrationBuilder.DropTable(
+                name: "Courses");
+
+            migrationBuilder.DropTable(
                 name: "DocumentTypes");
 
             migrationBuilder.DropTable(
                 name: "PaymentType");
 
             migrationBuilder.DropTable(
-                name: "User");
-
-            migrationBuilder.DropTable(
-                name: "Courses");
-
-            migrationBuilder.DropTable(
                 name: "Periods");
+
+            migrationBuilder.DropTable(
+                name: "User");
 
             migrationBuilder.DropTable(
                 name: "UserEnrollment");

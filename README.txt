@@ -12,17 +12,25 @@ dotnet tool install dotnetsay --tool-path c:\dotnet-tools
 
 
 ======================= CONSOLE ==================
+
+--drop database 
+
+PM> Drop-Database
+
+--remove migration
+
 PM> remove-migration
 
-
+-- first migration
 
 PM> add-migration InitialCreate
 
 PM> Update-Database
 
+--- for update
 
-PM> Update-database InitialCreate
-
+PM> add-migration upgrade_Curso_Periodo
+PM> update-database
 
  
 
