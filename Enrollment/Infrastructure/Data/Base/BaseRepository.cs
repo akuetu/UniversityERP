@@ -51,16 +51,16 @@ namespace Enrollment.Infrastructure.Data.Base
                 return entity;
             }
 
-            public async Task UpdateAsync(T entity, CancellationToken cancellationToken = default)
+            public async Task<int> UpdateAsync(T entity, CancellationToken cancellationToken = default)
             {
                 DbContext.Entry(entity).State = EntityState.Modified;
-                await DbContext.SaveChangesAsync(cancellationToken);
+               return  await DbContext.SaveChangesAsync(cancellationToken);
             }
 
-            public async Task DeleteAsync(T entity, CancellationToken cancellationToken = default)
+            public async Task<int> DeleteAsync(T entity, CancellationToken cancellationToken = default)
             {
                 DbContext.Set<T>().Remove(entity);
-                await DbContext.SaveChangesAsync(cancellationToken);
+               return await DbContext.SaveChangesAsync(cancellationToken);
             }
 
             public async Task<T> FirstAsync(ISpecification<T> spec, CancellationToken cancellationToken = default)

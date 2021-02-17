@@ -10,7 +10,9 @@ namespace Enrollment.Infrastructure.Data.FluentValidation
         {
            // List<ValidateCoursePeriodViewModel> ValidateCoursePeriodViewModelList = new List<ValidateCoursePeriodViewModel>();
             RuleFor(x => x.CountryId).NotNull().WithMessage("Country must be provided.");
-            RuleFor(x => x.CoursePeriods).SetValidator(new InlineValidator<List<CoursePeriodViewModel>>());
+            RuleFor(x => x.CountyId).NotNull().WithMessage("Country must be provided.");
+            RuleFor(x => x.CoursePeriods).NotNull().WithMessage("Country must be provided.");
+            //RuleFor(x => x.CoursePeriods).SetValidator(new List<CoursePeriod>());
             //RuleFor(x => x.CoursePeriods).SetValidator(new List<CoursePeriodViewModel>());
             //RuleFor(x => x.Orders)
             //  .Must(x => x.Count <= 10).WithMessage("No more than 10 orders are allowed")

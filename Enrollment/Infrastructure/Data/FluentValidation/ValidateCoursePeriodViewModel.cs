@@ -3,7 +3,7 @@ using FluentValidation;
 
 namespace Enrollment.Infrastructure.Data.FluentValidation
 {
-    public class ValidateCoursePeriodViewModel: AbstractValidator<CoursePeriodViewModel>
+    public class ValidateCoursePeriodViewModel: AbstractValidator<CoursePeriod>
     {
         public ValidateCoursePeriodViewModel()
         {

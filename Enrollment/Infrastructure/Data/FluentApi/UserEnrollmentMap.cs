@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Enrollment.Model.Entities;
+﻿using Enrollment.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -21,7 +17,8 @@ namespace Enrollment.Infrastructure.Data.FluentApi
             builder.Property(x => x.DocumentTypeId).IsRequired();
             builder.Property(x => x.PaymentTypeId).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-            builder.Property(x => x.CoursePeriods).IsRequired();
+           // builder.Property(x => x.CoursePeriods).IsRequired();
+            builder.HasMany(x => x.CoursePeriods);
         }
     }
 }

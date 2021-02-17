@@ -114,8 +114,6 @@ namespace Enrollment.Migrations
                     PathTypeDocument = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     CountryId = table.Column<int>(type: "int", nullable: false),
                     CountyId = table.Column<int>(type: "int", nullable: false),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
-                    PeriodId = table.Column<int>(type: "int", nullable: false),
                     PaymentTypeId = table.Column<int>(type: "int", nullable: false),
                     PathTypePayment = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: true),
                     Note = table.Column<string>(type: "nvarchar(max)", maxLength: 5000, nullable: true)
@@ -124,6 +122,54 @@ namespace Enrollment.Migrations
                 {
                     table.PrimaryKey("PK_UserEnrollment", x => x.Id);
                 });
+
+            migrationBuilder.CreateTable(
+                name: "CoursePeriod",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    CourseId = table.Column<int>(type: "int", nullable: false),
+                    PeriodId = table.Column<int>(type: "int", nullable: false),
+                    UserEnrollmentId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_CoursePeriod", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CoursePeriod_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CoursePeriod_Periods_PeriodId",
+                        column: x => x.PeriodId,
+                        principalTable: "Periods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_CoursePeriod_UserEnrollment_UserEnrollmentId",
+                        column: x => x.UserEnrollmentId,
+                        principalTable: "UserEnrollment",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursePeriod_CourseId",
+                table: "CoursePeriod",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursePeriod_PeriodId",
+                table: "CoursePeriod",
+                column: "PeriodId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursePeriod_UserEnrollmentId",
+                table: "CoursePeriod",
+                column: "UserEnrollmentId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -135,7 +181,7 @@ namespace Enrollment.Migrations
                 name: "Countries");
 
             migrationBuilder.DropTable(
-                name: "Courses");
+                name: "CoursePeriod");
 
             migrationBuilder.DropTable(
                 name: "DocumentTypes");
@@ -144,10 +190,13 @@ namespace Enrollment.Migrations
                 name: "PaymentType");
 
             migrationBuilder.DropTable(
-                name: "Periods");
+                name: "User");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Courses");
+
+            migrationBuilder.DropTable(
+                name: "Periods");
 
             migrationBuilder.DropTable(
                 name: "UserEnrollment");
