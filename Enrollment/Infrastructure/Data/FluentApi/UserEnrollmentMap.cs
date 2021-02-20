@@ -17,7 +17,6 @@ namespace Enrollment.Infrastructure.Data.FluentApi
             builder.Property(x => x.DocumentTypeId).IsRequired();
             builder.Property(x => x.PaymentTypeId).IsRequired();
             builder.Property(x => x.UserId).IsRequired();
-           // builder.Property(x => x.CoursePeriods).IsRequired();
             builder.HasMany(x => x.CoursePeriods);
         }
     }

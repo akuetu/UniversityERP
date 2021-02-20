@@ -14,8 +14,9 @@ namespace Enrollment.Infrastructure.Data.FluentApi
             public void Configure(EntityTypeBuilder<Country> builder)
             {
                 builder.HasKey(x => x.Id);
+                builder.HasIndex(x=> x.Name).IsUnique();
                 builder.Property(x => x.Name).IsRequired().HasMaxLength(100);
-            }
+        }
         }
      
 }
