@@ -7,7 +7,7 @@ namespace Enrollment.Services.Validators
     {
         public CountryValidator()
         {
-            RuleFor(x => x.Name).NotEmpty().NotNull().WithMessage("the name cannot be blank");
+            RuleFor(x => x.Name).NotEmpty().NotNull().WithMessage("the Name cannot be blank");
         }
     }
 }
