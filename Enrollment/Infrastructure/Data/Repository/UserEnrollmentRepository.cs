@@ -1,11 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Threading.Tasks;
 using Enrollment.Infrastructure.Data.Base;
 using Enrollment.Infrastructure.Data.Context;
 using Enrollment.Infrastructure.Data.Interfaces;
 using Enrollment.Model.Entities;
-using Microsoft.EntityFrameworkCore;
 
 namespace Enrollment.Infrastructure.Data.Repository
 {

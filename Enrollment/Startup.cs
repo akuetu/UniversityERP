@@ -10,6 +10,7 @@ using Enrollment.Infrastructure.Data.Repository;
 using Enrollment.Services;
 using Enrollment.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using FluentValidation.AspNetCore;
 
 namespace Enrollment
 {
@@ -26,9 +27,9 @@ namespace Enrollment
         public void ConfigureServices(IServiceCollection services)
         {
 
-            services.AddControllers().AddNewtonsoftJson(options =>
-                       options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore
-                       );
+            services.AddControllers()
+                .AddNewtonsoftJson(options =>  options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore)
+                .AddFluentValidation(options => options.RegisterValidatorsFromAssemblyContaining<Startup>()); ;
 
 
             services.AddDbContext<EnrollmentContext>(
@@ -38,6 +39,9 @@ namespace Enrollment
             services.AddTransient<IHttpHelperService, HttpHelperService>();
             services.AddTransient<IUserEnrollmentService, UserEnrollmentService>();
             services.AddTransient<IUserEnrollmentRepository, UserEnrollmentRepository>();
+            //Inject all CRUD generic <T>
+            services.AddTransient(typeof(ICrudService<>), typeof(CrudService<>));
+            services.AddTransient(typeof(ICrudRepository<>), typeof(CrudRepository<>));
 
             services.AddSwaggerGen(c =>
             {

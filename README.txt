@@ -32,6 +32,7 @@ PM> Update-Database
 PM> add-migration upgrade_Curso_Periodo
 PM> update-database
 
+
  
 
 

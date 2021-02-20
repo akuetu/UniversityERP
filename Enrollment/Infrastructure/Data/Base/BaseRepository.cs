@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 namespace Enrollment.Infrastructure.Data.Base
 {
    
-        public class BaseRepository<T>: IRepository<T> where T : class
+        public abstract class BaseRepository<T>: IRepository<T> where T : class
         {
             protected readonly EnrollmentContext DbContext;
 
@@ -45,7 +45,7 @@ namespace Enrollment.Infrastructure.Data.Base
 
             public async Task<T> AddAsync(T entity, CancellationToken cancellationToken = default)
             {
-                await DbContext.Set<T>().AddAsync(entity);
+                await DbContext.Set<T>().AddAsync(entity, cancellationToken);
                 await DbContext.SaveChangesAsync(cancellationToken);
 
                 return entity;
