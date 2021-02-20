@@ -129,13 +129,25 @@ namespace Enrollment.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    CourseId = table.Column<int>(type: "int", nullable: false),
-                    PeriodId = table.Column<int>(type: "int", nullable: false),
+                    CourseId = table.Column<int>(type: "int", nullable: true),
+                    PeriodId = table.Column<int>(type: "int", nullable: true),
                     UserEnrollmentId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_CoursePeriod", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_CoursePeriod_Courses_CourseId",
+                        column: x => x.CourseId,
+                        principalTable: "Courses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_CoursePeriod_Periods_PeriodId",
+                        column: x => x.PeriodId,
+                        principalTable: "Periods",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
                         name: "FK_CoursePeriod_UserEnrollment_UserEnrollmentId",
                         column: x => x.UserEnrollmentId,
@@ -145,9 +157,55 @@ namespace Enrollment.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Counties_Name",
+                table: "Counties",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Countries_Name",
+                table: "Countries",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursePeriod_CourseId",
+                table: "CoursePeriod",
+                column: "CourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_CoursePeriod_PeriodId",
+                table: "CoursePeriod",
+                column: "PeriodId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_CoursePeriod_UserEnrollmentId",
                 table: "CoursePeriod",
                 column: "UserEnrollmentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Courses_Name",
+                table: "Courses",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_PaymentType_Name",
+                table: "PaymentType",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Periods_Name",
+                table: "Periods",
+                column: "Name",
+                unique: true);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_User_Name",
+                table: "User",
+                column: "Name",
+                unique: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -162,19 +220,19 @@ namespace Enrollment.Migrations
                 name: "CoursePeriod");
 
             migrationBuilder.DropTable(
-                name: "Courses");
-
-            migrationBuilder.DropTable(
                 name: "DocumentTypes");
 
             migrationBuilder.DropTable(
                 name: "PaymentType");
 
             migrationBuilder.DropTable(
-                name: "Periods");
+                name: "User");
 
             migrationBuilder.DropTable(
-                name: "User");
+                name: "Courses");
+
+            migrationBuilder.DropTable(
+                name: "Periods");
 
             migrationBuilder.DropTable(
                 name: "UserEnrollment");

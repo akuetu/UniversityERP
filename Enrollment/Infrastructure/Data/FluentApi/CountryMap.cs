@@ -1,15 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Enrollment.Model.Entities;
+﻿using Enrollment.Model.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace Enrollment.Infrastructure.Data.FluentApi
 {
-   
-        public class CountryTypeMap : IEntityTypeConfiguration<Country>
+
+    public class CountryTypeMap : IEntityTypeConfiguration<Country>
         {
             public void Configure(EntityTypeBuilder<Country> builder)
             {

@@ -1,34 +1,52 @@
-﻿using Enrollment.Infrastructure.Data.Context;
-using Enrollment.Infrastructure.Data.Repository;
+﻿using Enrollment.Infrastructure.Data.Interfaces;
+using Enrollment.Services.CustomException;
 using Enrollment.Services.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace Enrollment.Services
 {
 
-    public class CrudService<T>: CrudRepository<T>,ICrudService<T> where T: class
+    public class CrudService<T>: ICrudService<T> where T: class
     {
-        public CrudService(EnrollmentContext enrollmentContext): base(enrollmentContext){}
-
-        public async Task<int> DeleteCountry(T entity)
+        private readonly ICrudRepository<T> _crudRepository;
+        public CrudService(ICrudRepository<T> crudRepository)
         {
-            return await DeleteAsync(entity);
+            _crudRepository = crudRepository;
         }
 
-        public async Task<IReadOnlyList<T>> GetCountryList()
+        public async Task<int> DeleteEntity(T entity)
         {
-            return await GetEntityList();
+            return await _crudRepository.DeleteEntity(entity);
         }
 
-        public async Task<T> SaveCountry(T entity)
+        public async Task<IReadOnlyList<T>> GetEntityList()
         {
-            return await SaveEntity(entity);
+            return await _crudRepository.GetEntityList();
         }
 
-        public async Task<int> UpdateCountry(T entity)
+        public async Task<T> SaveEntity(T entity)
         {
-            return await UpdateAsync(entity);
+            try
+            {
+                await _crudRepository.SaveEntity(entity);
+            }
+            catch(DbUpdateException ex)
+            {
+                throw new DuplicateNameException(ex.Message);
+            }
+            catch (System.Exception)
+            {
+
+                throw;
+            }
+            return entity;
+        }
+
+        public async Task<int> UpdateEntity(T entity)
+        {
+            return await _crudRepository.UpdateEntity(entity);
         }
     }
 }

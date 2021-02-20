@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Enrollment.Migrations
 {
     [DbContext(typeof(EnrollmentContext))]
-    [Migration("20210217235016_upgrade_Curso_Periodo")]
-    partial class upgrade_Curso_Periodo
+    [Migration("20210220213158_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -34,6 +34,9 @@ namespace Enrollment.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Countries");
                 });
@@ -62,6 +65,9 @@ namespace Enrollment.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("Counties");
                 });
 
@@ -78,6 +84,9 @@ namespace Enrollment.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Courses");
                 });
@@ -140,6 +149,9 @@ namespace Enrollment.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("Name")
+                        .IsUnique();
+
                     b.ToTable("PaymentType");
                 });
 
@@ -156,6 +168,9 @@ namespace Enrollment.Migrations
                         .HasColumnType("nvarchar(100)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("Periods");
                 });
@@ -186,6 +201,9 @@ namespace Enrollment.Migrations
                         .HasColumnType("nvarchar(15)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("Name")
+                        .IsUnique();
 
                     b.ToTable("User");
                 });
