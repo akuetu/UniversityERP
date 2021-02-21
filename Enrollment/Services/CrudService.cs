@@ -2,6 +2,7 @@
 using Enrollment.Services.CustomException;
 using Enrollment.Services.Interfaces;
 using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
@@ -32,14 +33,14 @@ namespace Enrollment.Services
             {
                 await _crudRepository.SaveEntity(entity);
             }
-            catch(DbUpdateException ex)
-            {
-                throw new DuplicateNameException(ex.Message);
+            catch(DbUpdateException ex) when (ex.InnerException.Message.Contains("duplicate"))
+            {               
+                throw new DuplicateNameException("Error: Duplicate entity name.");
             }
-            catch (System.Exception)
+            catch (Exception ex)
             {
-
-                throw;
+               
+                throw new Exception(ex.Message);
             }
             return entity;
         }
