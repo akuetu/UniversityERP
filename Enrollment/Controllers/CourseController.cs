@@ -7,11 +7,11 @@ namespace Enrollment.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CountryController : ControllerBase
+    public class CourseController : ControllerBase
     {
-        private readonly ICrudService<Country> _crudService;
+        private readonly ICrudService<Course> _crudService;
 
-        public CountryController(ICrudService<Country> crudService)
+        public CourseController(ICrudService<Course> crudService)
         {
             _crudService = crudService;
         }
@@ -23,22 +23,22 @@ namespace Enrollment.Controllers
         }
 
         [HttpPost("save")]
-        public async Task<IActionResult> Save(Country country)
-        {         
-            return Ok(await _crudService.SaveEntity(country));
+        public async Task<IActionResult> Save(Course course)
+        {
+            return Ok(await _crudService.SaveEntity(course));
         }
 
 
         [HttpPost("delete")]
-        public async Task<IActionResult> Delete(Country country)
+        public async Task<IActionResult> Delete(Course course)
         {
-            return Ok(await _crudService.DeleteEntity(country));
+            return Ok(await _crudService.DeleteEntity(course));
         }
 
         [HttpPost("update")]
-        public async Task<IActionResult> Update(Country country)
+        public async Task<IActionResult> Update(Course course)
         {
-            return Ok(await _crudService.UpdateEntity(country));
+            return Ok(await _crudService.UpdateEntity(course));
         }
 
     }
