@@ -22,6 +22,11 @@ namespace Enrollment.Services
             return await _crudRepository.DeleteEntity(entity);
         }
 
+
+        public async Task<IReadOnlyList<T>> GetByIdAsync(T entity)
+        {
+            return await _crudRepository.GetByIdAsync(entity);
+        }
         public async Task<IReadOnlyList<T>> GetEntityList()
         {
             return await _crudRepository.GetEntityList();

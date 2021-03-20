@@ -9,5 +9,6 @@ namespace Enrollment.Infrastructure.Data.Interfaces
         Task<T> SaveEntity(T entity);
         Task<int> DeleteEntity(T entity);
         Task<int> UpdateEntity(T entity);
+        Task<IReadOnlyList<T>> GetByIdAsync(T entity);
     }
 }

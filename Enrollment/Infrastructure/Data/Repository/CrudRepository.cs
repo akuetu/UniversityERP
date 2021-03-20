@@ -18,6 +18,11 @@ namespace Enrollment.Infrastructure.Data.Repository
             return await DeleteAsync(entity);
         }
 
+        public Task<IReadOnlyList<T>> GetByIdAsync(T entity) 
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<IReadOnlyList<T>> GetEntityList()
         {
             return await ListAllAsync();

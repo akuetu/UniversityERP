@@ -11,6 +11,10 @@ https://docs.microsoft.com/en-us/dotnet/core/tools/global-tools
 dotnet tool install dotnetsay --tool-path c:\dotnet-tools
 
 
+Then, update the ConfigureServices method by adding AddNewtonsoftJson() to AddControllers() l
+Install-Package Microsoft.AspNetCore.Mvc.NewtonsoftJson
+
+
 ======================= CONSOLE ==================
 
 --drop database 
