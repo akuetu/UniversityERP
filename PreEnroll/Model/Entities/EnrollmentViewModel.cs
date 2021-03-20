@@ -1,5 +1,4 @@
-﻿using Enrollment.Model.Entities;
-using System;
+﻿using System;
 
 namespace PreEnroll.Model.Entities
 {
