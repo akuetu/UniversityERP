@@ -29,6 +29,11 @@ namespace Enrollment.Services
             return await _userEnrollmentRepository.GetAllEnrollment();
         }
 
+        public FormEnrollmentModel GetFormEnrollment()
+        {
+            return  _userEnrollmentRepository.GetFormEnrollment();
+        }
+
         public async Task<UserEnrollment> SaveEnrollment(UserEnrollment userEnrollment)
         {
             var validator = new ValidateUserEnrollment();

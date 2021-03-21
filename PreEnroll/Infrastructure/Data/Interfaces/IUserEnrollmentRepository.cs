@@ -10,5 +10,6 @@ namespace Enrollment.Infrastructure.Data.Interfaces
         Task<IEnumerable<UserEnrollment>> GetEnrollment();
         Task<IEnumerable<EnrollmentViewModel>> GetAllEnrollment();
         Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment);
+        FormEnrollmentModel GetFormEnrollment();
     }
 }

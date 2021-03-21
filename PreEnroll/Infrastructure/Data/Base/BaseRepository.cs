@@ -42,7 +42,7 @@ namespace Enrollment.Infrastructure.Data.Base
         {
             using IDbConnection db = GetDbconnection();
             return await db.QueryAsync<T>(sp, parms, commandType: commandType);
-        }
+        }       
 
         public async Task<T> Insert<T>(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
         {

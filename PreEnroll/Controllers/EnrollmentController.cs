@@ -21,7 +21,7 @@ namespace PreEnroll.Controllers
 
 
         [HttpGet("getuser")]
-        public async Task<IActionResult> GetAUser()
+        public async Task<IActionResult> GetUser()
         {
             return Ok(await userService.ListAllUser());
         }
@@ -37,6 +37,13 @@ namespace PreEnroll.Controllers
         {
             return Ok(await userEnrollmentService.GetAllEnrollment());
         }
+
+        [HttpGet("getformEnrollment")]
+        public IActionResult GetFormEnrollment()
+        {
+            return Ok( userEnrollmentService.GetFormEnrollment());
+        }
+
 
         [HttpPost("saveuser")]
         public async Task<IActionResult> PostUser(User user)
