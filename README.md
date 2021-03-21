@@ -1,3 +1,2 @@
 # University ERP
-University ERP
-Dapper and EF 
+Exploring EF Core and Dapper ORM 
