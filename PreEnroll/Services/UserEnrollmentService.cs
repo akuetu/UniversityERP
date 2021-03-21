@@ -50,6 +50,11 @@ namespace Enrollment.Services
             return await _userEnrollmentRepository.SaveEnrollment(userEnrollment);
         }
 
-         
+        public async Task<int> SaveEnrollmentTransaction(UserEnrollment userEnrollment)
+        {   
+            if (userEnrollment == null) throw new ArgumentNullException(nameof(userEnrollment));
+
+            return await _userEnrollmentRepository.SaveEnrollmentTransaction(userEnrollment);
+        }
     }
 }

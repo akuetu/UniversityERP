@@ -54,7 +54,7 @@ namespace PreEnroll.Controllers
         [HttpPost("saveUserEnrollment")]
         public async Task<IActionResult> PostUserEnrollment(UserEnrollment userEnrollment)
         {
-            return Ok(await userEnrollmentService.SaveEnrollment(userEnrollment));
+            return Ok(await userEnrollmentService.SaveEnrollmentTransaction(userEnrollment));
         }
     }
 }

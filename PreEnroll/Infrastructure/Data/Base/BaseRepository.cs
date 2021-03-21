@@ -26,6 +26,12 @@ namespace Enrollment.Infrastructure.Data.Base
             return new SqlConnection(_config.GetSection(Connectionstring).Value);
         }
 
+
+        public SqlConnection GetSqlClinetconnection()
+        {
+            return new SqlConnection(_config.GetSection(Connectionstring).Value);
+        }
+
         public async Task<T> Execute(string sp, DynamicParameters parms, CommandType commandType = CommandType.StoredProcedure)
         {
             using IDbConnection db = GetDbconnection();

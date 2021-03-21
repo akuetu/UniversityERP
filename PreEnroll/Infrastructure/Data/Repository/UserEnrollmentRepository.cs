@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
@@ -13,8 +14,12 @@ namespace Enrollment.Infrastructure.Data.Repository
 {
     public class UserEnrollmentRepository: BaseRepository<UserEnrollment>, IUserEnrollmentRepository
     {
-   
-        public UserEnrollmentRepository(IConfiguration config) :base(config) { }
+        private readonly IConfiguration config;
+
+        public UserEnrollmentRepository(IConfiguration config) :base(config) 
+        {
+            this.config = config;
+        }
 
 
         public async Task<IEnumerable<UserEnrollment>> GetEnrollment()
@@ -25,6 +30,47 @@ namespace Enrollment.Infrastructure.Data.Repository
         public async Task<IEnumerable<EnrollmentViewModel>> GetAllEnrollment()
         {
             return await GetAll<EnrollmentViewModel>("Sp_GetAllEnrollment", null, commandType: CommandType.StoredProcedure);
+        }
+
+
+        public async Task<int> SaveEnrollmentTransaction(UserEnrollment enrollment)
+        {
+            var result = 0;
+
+            DynamicParameters enrollParameter = new DynamicParameters();
+            enrollParameter.Add("@DocumentTypeId", enrollment.DocumentTypeId);
+            enrollParameter.Add("@CountyId", enrollment.CountyId);
+            enrollParameter.Add("@CountryId", enrollment.CountryId);
+            enrollParameter.Add("@PaymentTypeId", enrollment.PaymentTypeId);
+            enrollParameter.Add("@PathTypeDocument", enrollment.PathTypeDocument);
+            enrollParameter.Add("@PathTypePayment", enrollment.PathTypePayment);
+            enrollParameter.Add("@Note", enrollment.Note);
+
+            DynamicParameters userllParameter = new DynamicParameters();
+            userllParameter.Add("@Name", enrollment.User.Name);
+            userllParameter.Add("@Telephone", enrollment.User.Telephone);
+            userllParameter.Add("@Address", enrollment.User.Address);
+            userllParameter.Add("@HasDisability", enrollment.User.HasDisability);
+
+
+            using (var connection = GetSqlClinetconnection())
+            {
+                connection.Open();
+
+                using (var transaction = connection.BeginTransaction())
+                {
+                 
+                    var userId = await connection.QueryFirstOrDefaultAsync<int>("SP_SaveUser", userllParameter, commandType: CommandType.StoredProcedure, transaction: transaction);
+
+                    enrollParameter.Add("@UserId", userId);  
+                    
+                    result = await connection.ExecuteAsync("SP_SaveUserEnrollment", enrollParameter, commandType: CommandType.StoredProcedure, transaction: transaction);
+
+                    transaction.Commit();
+                }
+            }
+
+            return result;
         }
 
         public async Task<UserEnrollment> SaveEnrollment(UserEnrollment enrollment)

@@ -34,6 +34,14 @@ namespace PreEnroll
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("https://localhost:44372").AllowAnyMethod().AllowAnyHeader();
+                    });
+            });
 
             services.AddControllers();
 
@@ -62,6 +70,7 @@ namespace PreEnroll
 
             app.UseRouting();
 
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
